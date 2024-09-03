@@ -58,4 +58,26 @@ class User extends Authenticatable
     public function receivedLikes(){
         return $this->hasManyThrough(Like::class, Post::class );
     }
+
+    public function receivedComments(){
+        return $this->hasManyThrough(Comment::class, Post::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+    public function followers(){
+        return $this->hasMany(Follower::class);
+    }
+
+    public function following(User $user){
+        return $this->followers()->where('follower_id', $user->id)->get()->count();
+    }
+
+    public function followedBy(User $user){
+        return $this->followers()->where('follower_id', $user->id)->get();
+    }
+
+    
 }

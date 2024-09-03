@@ -12,7 +12,7 @@
                 <div class="text-danger p-1">{{$message}}</div>
             @enderror
             <label for="username" class="form-label"></label>
-            <input type="text" name="username" class="form-control p-2 @error('username') border border-danger border-2 @enderror" placeholder="Your username" value="{{old('username')}}">
+            <input type="text" name="username" class="form-control p-2 @error('username') border border-danger border-2 @enderror" placeholder="Username" value="{{old('username')}}">
             @error('username')
                 <div class="text-danger p-1">{{$message}}</div>
             @enderror

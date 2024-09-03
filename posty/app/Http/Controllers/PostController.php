@@ -17,7 +17,7 @@ class PostController extends Controller
         $this->middleware(['auth'])->only('destroy', 'store');
     }
     public function index()
-    {   $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(10);
+    {   $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(5);
         // dd($posts->created_at);
         return view('post', ['posts'=>$posts]);
     }
@@ -39,6 +39,8 @@ class PostController extends Controller
 
     public function show(Post $post){
         // dd($post);
-        return view('post-index', ['post'=>$post]);
+        $comments = $post->comments()->with('user')->get();
+        // dd($comments);
+        return view('post-index', ['post'=>$post, 'comments'=>$comments]);
     }
 }
