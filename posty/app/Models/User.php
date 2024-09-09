@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
+        'bio',
+        'image',
     ];
 
     /**
@@ -79,5 +81,17 @@ class User extends Authenticatable
         return $this->followers()->where('follower_id', $user->id)->get();
     }
 
-    
+    public function accountOwner(User $user){
+        return $this->id === $user->id ? true : false ;
+    }
+
+    public function getImageUrl(){
+        if($this->image){
+            return url('storage/'.$this->image);
+        }
+        else{
+            return "https://api.dicebear.com/6.x/fun-emoji/svg?seed={$this->name}";
+        }
+    }
+ 
 }

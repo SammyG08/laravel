@@ -13,11 +13,16 @@ use App\Http\Controllers\UnLikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReplyCommentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPostController;
 
 
 Route::get('search',[SearchController::class, 'search'])->name('search');
 Route::get('/find/user',[SearchController::class, 'find'])->name('find.user');
+
+Route::get('edit/{user:username}',[UserController::class, 'edit'])->name('edit.profile');
+Route::post('edit/{user:username}/store',[UserController::class, 'store'])->name('store.edit');
+Route::get('/user/{user}',[UserController::class, 'index'])->name('profile');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -46,10 +51,12 @@ Route::delete('post/{post}/comment/{comment}/like', [CommentLikeController::clas
 Route::get('post/comment/{comment}/reply', [ReplyCommentController::class, 'index'])->name('reply');
 Route::get('post/comment/{comment}/reply/show', [ReplyCommentController::class, 'showReplies'])->name('show.replies');
 Route::post('post/comment/{comment}/reply/save', [ReplyCommentController::class, 'store'])->name('store.reply');
+Route::delete('post/comment/reply/{reply}/delete', [ReplyCommentController::class, 'destroy'])->name('delete.reply');
 
-Route::get('/user/{user:username}/posts', [UserPostController::class, 'list'])->name('user.posts');
+Route::get('/user/{user:username}/post', [UserPostController::class, 'list'])->name('user.posts');
 
 Route::post('/user/{user:username}/posts/follow', [FollowerController::class, 'store'])->name('user.follow');
+Route::get('/user/{user:username}/posts/following', [FollowerController::class, 'showFollowing'])->name('following');
 Route::delete('/user/{user:username}/posts/follow', [FollowerController::class, 'destroy']);
-Route::get('/user/{user:username}/posts/follow', [FollowerController::class, 'showFollowers']);
+Route::get('/user/{user:username}/posts/follow', [FollowerController::class, 'showFollowers'])->name('followers');
 

@@ -35,7 +35,8 @@ class CommentController extends Controller
 
     function destroy(Request $request, Post $post, Comment $comment){
         // $this->authorize('delete', $comment);
-        $comment->where('user_id', $request->user()->id)->delete();
+        // dd($comment);
+        Comment::with('user', 'comment_likes', 'replies')->where('id', $comment->id)->delete();
         
         return back();
     }

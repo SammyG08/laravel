@@ -29,9 +29,14 @@ class ReplyCommentController extends Controller
         // return redirect(route('show.replies', $comment));
         return redirect(route('post'))->with('message', 'Reply sent successfully');
     }
+    function destroy(Request $request, ReplyComment $reply){
+        // dd($reply);
+        ReplyComment::with('user')->where('id', $reply->id)->delete();
+        return back();
+    }
 
     public function showReplies(Comment $comment){
-        $replies = $comment->replies()->with('user')->get();
+        $replies = $comment->replies()->with(['user'])->get();
         // dd($replies);
         return view('show-replies', [
             'replies' => $replies,

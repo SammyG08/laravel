@@ -20,7 +20,7 @@ class CommentLikeController extends Controller
 
     function destroy(Request $request, Post $post, Comment $comment){
         // dd($comment->comment_likes());
-        $comment->comment_likes()->where('user_id', $request->user()->id)->delete();
+        $comment->comment_likes()->with(['comment'])->where('user_id', $request->user()->id)->delete();
         return back();
     }
 }

@@ -18,7 +18,6 @@ class PostController extends Controller
     }
     public function index()
     {   $posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(5);
-        // dd($posts->created_at);
         return view('post', ['posts'=>$posts]);
     }
 
@@ -34,11 +33,10 @@ class PostController extends Controller
     public function destroy(Post $post){
         $this->authorize('delete', $post);
         $post->delete();
-        return back();
+        return redirect(route('post'));
     }
 
     public function show(Post $post){
-        // dd($post);
         $comments = $post->comments()->with('user')->get();
         // dd($comments);
         return view('post-index', ['post'=>$post, 'comments'=>$comments]);
