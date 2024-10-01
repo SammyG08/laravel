@@ -16,29 +16,28 @@ class SearchController extends Controller
         $followedByActiveUser = $follower->with('user')->where('follower_id', Auth::user()->id)->get('user_id');
         $count = count($followedByActiveUser);
         $usersNotFollowed = [];
-        if($count >= 1){
-            $users = $userModel->with('comments', 'likes', 'posts', 'followers')->whereNot('id', $followedByActiveUser[$count-1]->user_id)->get();
+        if ($count >= 1) {
+            $users = $userModel->with('comments', 'likes', 'posts', 'followers', "receivedLikes", 'receivedLikes', 'messages')->whereNot('id', $followedByActiveUser[$count - 1]->user_id)->get();
             array_push($usersNotFollowed, $users);
-        }
-        else{
-            $users = $userModel->with('comments','likes', 'posts', 'followers' )->whereNot('id', Auth::user()->id)->get();
+        } else {
+            $users = $userModel->with('comments', 'likes', 'posts', 'followers', 'receivedLikes', 'receivedComments', 'messages')->whereNot('id', Auth::user()->id)->get();
             array_push($usersNotFollowed, $users);
         }
         return $usersNotFollowed;
     }
 
-    public function search(){
+    public function search()
+    {
         Auth::user() ? $usersNotFollowed = $this->discover() : $usersNotFollowed = null;
         return view('search', [
             'users' => $usersNotFollowed,
         ]);
     }
 
-    public function find(Request $request){
-        $result = User::with('posts', 'likes', 'comments')->where('username', 'like', '%'. $request->search . '%')->get();
+    public function find(Request $request)
+    {
+        $result = User::with('posts', 'likes', 'comments', 'receivedLikes', 'receivedComments', 'followers', 'messages')->where('username', 'like', '%' . $request->search . '%')->get();
         Auth::user() ? $usersNotFollowed = $this->discover() : $usersNotFollowed = null;
-        return view('search', ['results'=> $result,  'users' => $usersNotFollowed, ]);
+        return view('search', ['results' => $result,  'users' => $usersNotFollowed,]);
     }
-
-
 }

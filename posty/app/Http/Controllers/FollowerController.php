@@ -26,7 +26,7 @@ class FollowerController extends Controller
         $followers = $user->followers()->with(['user'])->get();
         $userModel= [];
         foreach ($followers as $follower){
-            $users = $user->with(['comments', 'posts', 'likes', 'followers'])->where('id', $follower->follower_id)->get();
+            $users = $user->with(['comments', 'posts', 'likes', 'followers', 'receivedComments', 'receivedLikes'])->where('id', $follower->follower_id)->get();
             // dd($users[0]->username);
             array_push($userModel, $users);
         }
@@ -41,7 +41,7 @@ class FollowerController extends Controller
         $followingUser = [];
         // dd($following);
         foreach ($following as $followermodel){
-            array_push($followingUser, $userModel->with(['comments', 'posts', 'likes', 'followers'])->where('id', $followermodel->user_id)->get());
+            array_push($followingUser, $userModel->with(['comments', 'posts', 'likes', 'followers', 'receivedComments', 'receivedLikes'])->where('id', $followermodel->user_id)->get());
         }       
         return view('list-following', ['followingUser'=> $followingUser, 'user'=>$user]);
     }

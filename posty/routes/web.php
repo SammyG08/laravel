@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
@@ -17,12 +17,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserPostController;
 
 
-Route::get('search',[SearchController::class, 'search'])->name('search');
-Route::get('/find/user',[SearchController::class, 'find'])->name('find.user');
+Route::get('search', [SearchController::class, 'search'])->name('search');
+Route::get('/find/user', [SearchController::class, 'find'])->name('find.user');
 
-Route::get('edit/{user:username}',[UserController::class, 'edit'])->name('edit.profile');
-Route::post('edit/{user:username}/store',[UserController::class, 'store'])->name('store.edit');
-Route::get('/user/{user}',[UserController::class, 'index'])->name('profile');
+Route::get('edit/{user:username}', [UserController::class, 'edit'])->name('edit.profile');
+Route::post('edit/{user:username}/store', [UserController::class, 'store'])->name('store.edit');
+Route::get('/user/{user}', [UserController::class, 'index'])->name('profile');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -32,7 +32,8 @@ Route::post('/login', [LoginController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/chats', [ChatController::class, 'index'])->name('chat');
+Route::get('/messages/{user:username}', [ChatController::class, 'show'])->name('message');
 
 Route::get('/', [PostController::class, 'index'])->name('post');
 Route::post('/post', [PostController::class, 'store'])->name('save.post');
@@ -59,4 +60,3 @@ Route::post('/user/{user:username}/posts/follow', [FollowerController::class, 's
 Route::get('/user/{user:username}/posts/following', [FollowerController::class, 'showFollowing'])->name('following');
 Route::delete('/user/{user:username}/posts/follow', [FollowerController::class, 'destroy']);
 Route::get('/user/{user:username}/posts/follow', [FollowerController::class, 'showFollowers'])->name('followers');
-

@@ -10,21 +10,25 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware("auth")->only("store, edit");
     }
-    public function index(User $user){
+    public function index(User $user)
+    {
         $follower = new Follower;
-        return view('user.view-profile', ['user' => $user, 'follower' => $follower ]);
+        return view('user.view-profile', ['user' => $user, 'follower' => $follower]);
     }
 
-    public function edit(User $user){
+    public function edit(User $user)
+    {
         return view('user.edit-profile', ['user' => $user]);
     }
 
-    public function store(Request $request, User $user){
+    public function store(Request $request, User $user)
+    {
         // dd($user);
-        $this->validate($request,[
+        $this->validate($request, [
             'name' => 'required',
             'username' => 'required',
             'bio' => 'nullable',
@@ -32,7 +36,7 @@ class UserController extends Controller
         ]);
         $imagePath = $request->hasFile('image') ? $request->file('image')->store('profile', 'public') : '';
         $user->image ? Storage::disk('public')->delete($user->image) : '';
-        $user->with(['comments', 'posts', 'likes', 'followers'])->where('id', $user->id)->update(['name' => $request->name, 'username' =>$request->username, 'bio' => $request->bio, 'image' => $imagePath]);
+        $user->with(['comments', 'posts', 'likes', 'followers', 'receivedLikes', 'receivedComments', 'comments', 'messages'])->where('id', $user->id)->update(['name' => $request->name, 'username' => $request->username, 'bio' => $request->bio, 'image' => $imagePath]);
         return redirect(route('profile', $user));
     }
 }
