@@ -5,7 +5,7 @@
                 style="width:70px; height:70px">
         </div>
         <div class="mt-4">
-            <a href="{{ route('profile', $user) }}"
+            <a href="{{ route('profile', $user->id) }}"
                 class="fst-normal text-secondary fw-bold fs-4 text-decoration-none d-block">{{ $user->name }}</a>
             <small class="text-muted fw-semibold fst-normal">Last seen
                 {{ $user->authenticated_at->diffForHumans() }}</small>

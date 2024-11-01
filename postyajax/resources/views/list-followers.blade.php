@@ -20,20 +20,20 @@
                             @if (!$usermodel->accountOwner(auth()->user()))
                                 @if (!$usermodel->following(auth()->user()))
                                     @if (!auth()->user()->following($usermodel))
-                                        <form action="{{ route('user.follow', $usermodel) }}" method="post">
+                                        <form action="{{ route('user.follow', $usermodel->id) }}" method="post">
                                             @csrf
                                             <button class="btn bg-primary text-white fw-bold btn-sm text-end"
                                                 type="submit"><small>Follow</small></button>
                                         </form>
                                     @else
-                                        <form action="{{ route('user.follow', $usermodel) }}" method="post">
+                                        <form action="{{ route('user.follow', $usermodel->id) }}" method="post">
                                             @csrf
                                             <button class="btn bg-primary text-white fw-bold btn-sm text-start"
                                                 type="submit"><small>Follow Back</small></button>
                                         </form>
                                     @endif
                                 @else
-                                    <form action="{{ route('user.follow', $usermodel) }}" method="post">
+                                    <form action="{{ route('user.follow', $usermodel->id) }}" method="post">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn bg-primary text-white fw-bold btn-sm text-end"
@@ -41,7 +41,7 @@
                                     </form>
                                 @endif
                             @else
-                                <form action="{{ route('profile', $usermodel) }}" method="get">
+                                <form action="{{ route('profile', $usermodel->id) }}" method="get">
                                     <button class="btn bg-primary text-white fw-bold btn-sm text-start"
                                         type="submit"><small>View Profile</small></button>
                                 </form>

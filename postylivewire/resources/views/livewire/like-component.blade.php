@@ -17,7 +17,7 @@
         @endif
         <a href="{{ route('comment', $post->id) }}" class="text-decoration-none me-1"><small>Comment</small></a>
         @can('delete', $post)
-            <form wire:submit="delete" class="d-inline">
+            <form wire:submit="delete" class="d-inline" wire:confirm="Are you sure you want to delete this post?">
                 @csrf
                 {{-- @method('DELETE') --}}
                 <button type="submit"

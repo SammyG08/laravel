@@ -7,7 +7,7 @@
                         style="width:60px; height:60px">
                 </div>
                 <div>
-                    <a href="{{ route('user.posts', $comment->user) }}"
+                    <a href="{{ route('user.posts', $comment->user->id) }}"
                         class="fs-6 fst-normal text-dark ps-2 fw-bold text-decoration-none">{{ $comment->user->name }}</a><small
                         class="text-muted p-2">{{ $comment->created_at->diffForHumans() }}</small>
                     <p class="fs-8 text-dark fst-normal mb-2 ps-2">{{ $comment->body }}</p>

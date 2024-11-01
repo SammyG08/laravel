@@ -22,9 +22,10 @@ class TrendingController extends Controller
             } else {
                 array_push($commentIds, $commentLikes->comment_id);
                 $comment = CommentLike::with('comment')->where('comment_id', '=', $commentLikes->comment_id)->get();
+                // dd($comment);
                 if ($comment->count() >= 4) {
-                    $postId = Comment::with('user', "comment_likes", "replies")->where('id', $commentLikes->comment_id)->get('post_id');
-                    $post = Post::find($postId);
+                    $postId = Comment::with('user', "comment_likes", "replies")->where('id', $commentLikes->comment_id)->first('post_id');
+                    $post = Post::with('user', "likes", "comments")->find($postId);
                     // dd($post);
                     in_array($post, $trendingPosts) ?: array_push($trendingPosts, $post);
                     // dd($trendingPosts);  

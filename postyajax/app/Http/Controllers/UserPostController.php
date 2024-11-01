@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 
 class UserPostController extends Controller
 {
-    public function list(User $user)
+    public function list($userId)
     {
+        $user = User::find($userId);
         // dd($user->posts);
         $posts = $user->posts()->with(['user', 'likes', 'comments'])->orderBy('created_at', 'desc')->paginate(5);
         // $follower = new Follower();

@@ -26,7 +26,7 @@ class CommentLikeComponent extends Component
     {
         // dd($comment);
         $like = new CommentLike;
-        $like->user_id = $comment['user_id'];
+        $like->user_id = Auth::user()->id;
         $like->comment_id = $comment['id'];
         $like->save();
     }

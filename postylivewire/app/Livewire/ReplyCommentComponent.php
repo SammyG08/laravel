@@ -27,7 +27,7 @@ class ReplyCommentComponent extends Component
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect(route('show.replies', $this->comment));
+        return redirect(route('show.replies', $this->comment->id));
     }
     public function render()
     {

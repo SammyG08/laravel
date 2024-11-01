@@ -38,7 +38,7 @@
                 </div>
             @endif
             <div class="container mt-4 w-50">
-                <button class="btn btn-success btn-sm"><a href="{{ route('edit.profile', $user) }}"
+                <button class="btn btn-success btn-sm"><a href="{{ route('edit.profile', $user->id) }}"
                         class="text-decoration-none text-white">Edit Profile</a></button>
             </div>
         @endauth

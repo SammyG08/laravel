@@ -36,7 +36,7 @@
                                         </div>
                                     @endif
                                     <div class="d-inline">
-                                        <a href="{{ route('reply', $comment) }}"
+                                        <a href="{{ route('reply', $comment->id) }}"
                                             class="text-decoration-none text-muted"><small>Reply</small></a>
                                     </div>
                                     @if ($comment->user_id === auth()->user()->id)
@@ -52,7 +52,7 @@
                                 </div>
                             @endauth
                             @if ($comment->replies->count())
-                                <a href="{{ route('show.replies', $comment) }}"
+                                <a href="{{ route('show.replies', $comment->id) }}"
                                     class=" d-block text-primary"><small>Show
                                         replies</small></a>
                             @endif

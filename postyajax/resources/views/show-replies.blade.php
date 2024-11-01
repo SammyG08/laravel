@@ -36,7 +36,8 @@
                         </div> --}}
                             @if ($reply->user_id === auth()->user()->id)
                                 <div class="d-inline">
-                                    <form action="{{ route('delete.reply', $reply) }}" method="post" class="w-100 d-inline">
+                                    <form action="{{ route('delete.reply', $reply->id) }}" method="post"
+                                        class="w-100 d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="border-0 bg-transparent ps-1 text-danger"><small>Delete</small></button>

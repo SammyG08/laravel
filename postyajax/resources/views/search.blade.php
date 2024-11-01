@@ -17,9 +17,10 @@
             @if ($results->count())
                 @foreach ($results as $result)
                     <div class="container w-50 mt-0 p-3 border-bottom border-dark-subtle ">
-                        <a href="{{ route('user.posts', $result) }}"
+                        <a href="{{ route('user.posts', $result->id) }}"
                             class="text-dark text-decoration-none d-block ps-4 fs-5">{{ $result->name }}</a>
-                        <span class="text-muted d-inline ps-4 fw-bold">@</span><a href="{{ route('user.posts', $result) }}"
+                        <span class="text-muted d-inline ps-4 fw-bold">@</span><a
+                            href="{{ route('user.posts', $result->id) }}"
                             class="text-muted text-decoration-none fw-bold fs-6">{{ $result->username }}</a>
                     </div>
                 @endforeach
@@ -43,20 +44,20 @@
                                     <div
                                         class="container w-50 p-2 d-flex justify-content-between bg-light-subtle border border-1 ">
                                         <div><span class=" fs-5 text-secondary d-block "><a
-                                                    href="{{ route('user.posts', $usermodel) }}"
+                                                    href="{{ route('user.posts', $usermodel->id) }}"
                                                     class="text-decoration-none text-secondary">{{ $usermodel->name }}</a></span>
                                             <small class="text-secondary d-block fw-bold">@
-                                                <a href="{{ route('user.posts', $usermodel) }}"
+                                                <a href="{{ route('user.posts', $usermodel->id) }}"
                                                     class="text-decoration-none text-secondary">{{ $usermodel->username }}</a></small>
                                         </div>
                                         @if (!auth()->user()->following($usermodel))
-                                            <form action="{{ route('user.follow', $usermodel) }}" method="post">
+                                            <form action="{{ route('user.follow', $usermodel->id) }}" method="post">
                                                 @csrf
                                                 <button class="btn bg-primary text-white fw-bold btn-sm text-end"
                                                     type="submit"><small>Follow</small></button>
                                             </form>
                                         @else
-                                            <form action="{{ route('user.follow', $usermodel) }}" method="post">
+                                            <form action="{{ route('user.follow', $usermodel->id) }}" method="post">
                                                 @csrf
                                                 <button class="btn bg-primary text-white fw-bold btn-sm text-start"
                                                     type="submit"><small>Follow Back</small></button>

@@ -10,16 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function index(Post $post){
+    public function index($postId)
+    {
+        $post = Post::find($postId);
         // $comment = $post->comments;
         // dd($comment);
         return view('comment', [
-            'post'=>$post,
+            'post' => $post,
         ]);
     }
 
-    public function store(Request $request, Post $post){
+    public function store(Request $request, $postId)
+    {
         // dd($request->user()->posts());
+        $post = Post::find($postId);
         $this->validate($request, [
             'body' => 'required',
         ]);
@@ -27,18 +31,18 @@ class CommentController extends Controller
         $post->comments()->create([
             'user_id' => $request->user()->id,
             'body' => $request->body,
-        ]); 
+        ]);
 
         // return route('post');
         return redirect(route('post'))->with('message', 'Comment added successfully');
     }
 
-    function destroy(Request $request, Post $post, Comment $comment){
+    function destroy($commentId)
+    {
         // $this->authorize('delete', $comment);
         // dd($comment);
-        Comment::with('user', 'comment_likes', 'replies')->where('id', $comment->id)->delete();
-        
+        Comment::with('user', 'comment_likes', 'replies')->where('id', $commentId)->delete();
+
         return back();
     }
-
 }

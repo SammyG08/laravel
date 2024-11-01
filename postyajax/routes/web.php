@@ -20,9 +20,9 @@ use App\Http\Controllers\UserPostController;
 Route::get('search', [SearchController::class, 'search'])->name('search');
 Route::get('/find/user', [SearchController::class, 'find'])->name('find.user');
 
-Route::get('edit/{user:username}', [UserController::class, 'edit'])->name('edit.profile');
-Route::post('edit/{user:username}/store', [UserController::class, 'store'])->name('store.edit');
-Route::get('/user/{user}', [UserController::class, 'index'])->name('profile');
+Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit.profile');
+Route::post('edit/{id}/store', [UserController::class, 'store'])->name('store.edit');
+Route::get('/user/{id}', [UserController::class, 'index'])->name('profile');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -33,30 +33,30 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/chats', [ChatController::class, 'index'])->name('chat');
-Route::get('/messages/{user:username}', [ChatController::class, 'show'])->name('message');
+Route::get('/messages/{id}', [ChatController::class, 'show'])->name('message');
 
 Route::get('/', [PostController::class, 'index'])->name('post');
 Route::post('/post', [PostController::class, 'store'])->name('save.post');
-Route::get('/post/{post}', [PostController::class, 'show'])->name('post.index');
-Route::delete('post/{post}/delete', [PostController::class, 'destroy'])->name('delete');
+Route::get('/post/{id}', [PostController::class, 'show'])->name('post.index');
+Route::post('post/delete', [PostController::class, 'destroy'])->name('delete');
 
 Route::post('post/like', [LikeController::class, 'store'])->name('like');
-Route::delete('post/unlike', [UnlikeController::class, 'destroy'])->name('unlike');
+Route::post('post/unlike', [UnlikeController::class, 'destroy'])->name('unlike');
 
-Route::get('post/{post}/comment', [CommentController::class, 'index'])->name('comment');
-Route::post('post/{post}/comment', [CommentController::class, 'store']);
-Route::delete('post/{post}/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('delete.comment');
-Route::post('post/{post}/comment/{comment}/like', [CommentLikeController::class, 'store'])->name('comment.like');
-Route::delete('post/{post}/comment/{comment}/like', [CommentLikeController::class, 'destroy']);
+Route::get('post/{id}/comment', [CommentController::class, 'index'])->name('comment');
+Route::post('post/{id}/comment', [CommentController::class, 'store']);
+Route::delete('post/comment/{id}/delete', [CommentController::class, 'destroy'])->name('delete.comment');
+Route::post('post/comment/like', [CommentLikeController::class, 'store'])->name('comment.like');
+Route::post('post/comment/unlike', [CommentLikeController::class, 'destroy'])->name('comment.unlike');
 
-Route::get('post/comment/{comment}/reply', [ReplyCommentController::class, 'index'])->name('reply');
-Route::get('post/comment/{comment}/reply/show', [ReplyCommentController::class, 'showReplies'])->name('show.replies');
-Route::post('post/comment/{comment}/reply/save', [ReplyCommentController::class, 'store'])->name('store.reply');
-Route::delete('post/comment/reply/{reply}/delete', [ReplyCommentController::class, 'destroy'])->name('delete.reply');
+Route::get('post/comment/{id}/reply', [ReplyCommentController::class, 'index'])->name('reply');
+Route::get('post/comment/{id}/reply/show', [ReplyCommentController::class, 'showReplies'])->name('show.replies');
+Route::post('post/comment/{id}/reply/save', [ReplyCommentController::class, 'store'])->name('store.reply');
+Route::delete('post/comment/reply/{id}/delete', [ReplyCommentController::class, 'destroy'])->name('delete.reply');
 
-Route::get('/user/{user:username}/post', [UserPostController::class, 'list'])->name('user.posts');
+Route::get('/user/{id}/post', [UserPostController::class, 'list'])->name('user.posts');
 
-Route::post('/user/{user:username}/posts/follow', [FollowerController::class, 'store'])->name('user.follow');
-Route::get('/user/{user:username}/posts/following', [FollowerController::class, 'showFollowing'])->name('following');
-Route::delete('/user/{user:username}/posts/follow', [FollowerController::class, 'destroy']);
-Route::get('/user/{user:username}/posts/follow', [FollowerController::class, 'showFollowers'])->name('followers');
+Route::post('/user/{id}/follow', [FollowerController::class, 'store'])->name('user.follow');
+Route::get('/user/{id}/following', [FollowerController::class, 'showFollowing'])->name('following');
+Route::post('/user/{id}/unfollow', [FollowerController::class, 'destroy'])->name("user.unfollow");
+Route::get('/user/{id}/followers', [FollowerController::class, 'showFollowers'])->name('followers');

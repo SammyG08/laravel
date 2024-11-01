@@ -12,7 +12,7 @@ class LikeController extends Controller
 {
     public function store(Request $request)
     {
-        dd($request->likePostId);
+        // dd($request->likePostId);
 
         $post = Post::find($request->likePostId);
         // dd($post);
@@ -24,7 +24,8 @@ class LikeController extends Controller
         // if(!$post->likes()->onlyTrashed()->where('user_id', $request->user()->id)->count()){
         //     Mail::to($post->user)->send(new PostLiked(Auth::user(), $post)); 
         // }
-        // return response()->json(status: 200);
-        return back();
+        $html = view('likeDeleteCommentUnlikeLogic', ['post' => Post::find($request->likePostId)])->render();
+        return response()->json(data: ['html' => $html, 'id' => $request->likePostId], status: 200);
+        // return back();
     }
 }

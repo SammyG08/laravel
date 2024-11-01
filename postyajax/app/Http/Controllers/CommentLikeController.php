@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentLikeController extends Controller
 {
-    function store(Request $request, Post $post, Comment $comment){
-        // dd($comment->comment_likes());
+    function store(Request $request)
+    {
+        $comment = Comment::find($request->likeId);
         $comment->comment_likes()->create([
             'user_id' => $request->user()->id
         ]);
-
-        return back();
-
+        return response()->json(['id' => $comment->id],  200);
     }
 
-    function destroy(Request $request, Post $post, Comment $comment){
-        // dd($comment->comment_likes());
+    function destroy(Request $request)
+    {
+        $comment = Comment::find($request->unLikeId);
         $comment->comment_likes()->with(['comment'])->where('user_id', $request->user()->id)->delete();
-        return back();
+        return response()->json(data: ['id' => $comment->id], status: 200);
     }
 }

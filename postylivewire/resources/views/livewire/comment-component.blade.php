@@ -7,7 +7,7 @@
                         style="width:60px; height:60px">
                 </div>
                 <div class="mb-4">
-                    <a href="{{ route('user.posts', $post->user) }}"
+                    <a href="{{ route('user.posts', $post->user->id) }}"
                         class="fs-6 fst-normal text-dark ps-2 fw-bold text-decoration-none">{{ $post->user->name }}</a><small
                         class="text-muted p-2">{{ $post->created_at->diffForHumans() }}</small>
                     <p class="fs-8 text-dark fst-normal mb-2 ps-2">{{ $post->body }}</p>

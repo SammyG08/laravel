@@ -14,19 +14,22 @@ class UserController extends Controller
     {
         $this->middleware("auth")->only("store, edit");
     }
-    public function index(User $user)
+    public function index($userId)
     {
+        $user = User::find($userId);
         $follower = new Follower;
         return view('user.view-profile', ['user' => $user, 'follower' => $follower]);
     }
 
-    public function edit(User $user)
+    public function edit($userId)
     {
+        $user = User::find($userId);
         return view('user.edit-profile', ['user' => $user]);
     }
 
-    public function store(Request $request, User $user)
+    public function store(Request $request, $userId)
     {
+        $user = User::find($userId);
         // dd($user);
         $this->validate($request, [
             'name' => 'required',

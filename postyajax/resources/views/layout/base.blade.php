@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- @vite('resources/css/app.css') -->
+    <meta name='csrf-token' content="{{ csrf_token() }}">
     <title>Posty</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -33,7 +33,7 @@
                     @auth
                         <button class=" text-secondary btn btn-md btn-outline-light bg-light fs-6 p-2 ">
                             <a class = "text-decoration-none text-secondary"
-                                href="{{ route('profile', auth()->user()) }}">{{ auth()->user()->name }}</a>
+                                href="{{ route('profile', auth()->user()->id) }}">{{ auth()->user()->name }}</a>
                         </button>
                         <form action="{{ route('logout') }}" method="post" class="fs-6 me-4 ">
                             @csrf

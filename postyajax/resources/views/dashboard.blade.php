@@ -13,7 +13,7 @@
                             style="width:60px; height:60px">
                     </div>
                     <div>
-                        <a href="{{ route('message', $user) }}"
+                        <a href="{{ route('message', $user->id) }}"
                             class="fst-normal text-dark fw-bold text-decoration-none">{{ $user->name }}</a>
                     </div>
                 </div>

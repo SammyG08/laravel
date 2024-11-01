@@ -39,6 +39,6 @@ class UserController extends Controller
         $imagePath = $request->hasFile('image') ? $request->file('image')->store('profile', 'public') : '';
         $user->image ? Storage::disk('public')->delete($user->image) : '';
         $user->with(['comments', 'posts', 'likes', 'followers', 'receivedLikes', 'receivedComments', 'comments', 'messages'])->where('id', $user->id)->update(['name' => $request->name, 'username' => $request->username, 'bio' => $request->bio, 'image' => $imagePath]);
-        return redirect(route('profile', $user));
+        return redirect(route('profile', $user->id));
     }
 }

@@ -17,9 +17,10 @@
             @if ($results->count())
                 @foreach ($results as $result)
                     <div class="container w-50 mt-0 p-3 border-bottom border-dark-subtle ">
-                        <a href="{{ route('user.posts', $result) }}"
+                        <a href="{{ route('user.posts', $result->id) }}"
                             class="text-dark text-decoration-none d-block ps-4 fs-5">{{ $result->name }}</a>
-                        <span class="text-muted d-inline ps-4 fw-bold">@</span><a href="{{ route('user.posts', $result) }}"
+                        <span class="text-muted d-inline ps-4 fw-bold">@</span><a
+                            href="{{ route('user.posts', $result->id) }}"
                             class="text-muted text-decoration-none fw-bold fs-6">{{ $result->username }}</a>
                     </div>
                 @endforeach

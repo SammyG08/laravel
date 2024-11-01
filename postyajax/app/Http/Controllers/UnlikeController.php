@@ -9,9 +9,10 @@ class UnlikeController extends Controller
 {
     public function destroy(Request $request)
     {
-        dd($request->unlikePostId);
+
         $post = Post::find($request->unlikePostId);
         $request->user()->likes()->where('post_id', $post->id)->delete();
-        return back();
+        $html = view('likeDeleteCommentUnlikeLogic', ['post' => $post])->render();
+        return response()->json(['html' => $html, 'id' => $request->unlikePostId], 200);
     }
 }

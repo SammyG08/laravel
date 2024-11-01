@@ -36,7 +36,7 @@ class EditComponent extends Component
         $imagePath = $this->image != null ? $this->image->store('profile', 'public') : '';
         $this->user->image ? Storage::disk('public')->delete($this->user->image) : '';
         $this->user->with(['comments', 'posts', 'likes', 'followers', 'receivedLikes', 'receivedComments', 'comments', 'messages'])->where('id', $this->user->id)->update(['name' => $this->name, 'username' => $this->username, 'bio' => $this->bio, 'image' => $imagePath]);
-        return redirect(route('profile', $this->user));
+        return redirect(route('profile', $this->user->id));
     }
     public function render()
     {

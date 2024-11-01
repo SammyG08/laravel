@@ -10,12 +10,12 @@
                     <div>
                         <span class=" fs-5 text-dark d-block">{{ $user->name }}</span>
                         <span class="text-dark d-block">
-                            <a href="{{ route('followers', $user) }}" class="text-decoration-none text-dark fw-bold">
+                            <a href="{{ route('followers', $user->id) }}" class="text-decoration-none text-dark fw-bold">
                                 {{ $user->followers->count() }} <small
                                     class = "fw-normal">{{ Str::plural('Follower', $user->followers->count()) }}</small>
                             </a>
                             @if ($follower->getFollowing($user))
-                                <a href="{{ route('following', $user) }}" class="text-decoration-none text-dark fw-bold">
+                                <a href="{{ route('following', $user->id) }}" class="text-decoration-none text-dark fw-bold">
                                     {{ $follower->getFollowing($user) }} <span class="fw-normal">following</span>
                                 </a>
                             @else
@@ -38,7 +38,7 @@
                 </div>
             @endif
             <div class="container mt-4 w-50">
-                <button class="btn btn-success btn-sm"><a href="{{ route('edit.profile', $user) }}"
+                <button class="btn btn-success btn-sm"><a href="{{ route('edit.profile', $user->id) }}"
                         class="text-decoration-none text-white">Edit Profile</a></button>
             </div>
         @endauth

@@ -2,10 +2,10 @@
 
     <div class="container w-100 d-flex mb-3 justify-content-between">
         <div class="container">
-            <span class=" fs-5 text-secondary d-block"><a href="{{ route('user.posts', $user) }}"
+            <span class=" fs-5 text-secondary d-block"><a href="{{ route('user.posts', $user->id) }}"
                     class="text-decoration-none text-secondary">{{ $user->name }}</a></span>
             <small class="text-secondary d-block"><small class="fw-bolder">@</small><a
-                    href="{{ route('user.posts', $user) }}"
+                    href="{{ route('user.posts', $user->id) }}"
                     class="text-decoration-none text-secondary">{{ $user->username }}</a></small>
         </div>
         @auth

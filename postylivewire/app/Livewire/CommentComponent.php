@@ -25,7 +25,7 @@ class CommentComponent extends Component
             'user_id' => Auth::user()->id,
         ]);
         $this->comment = '';
-        return redirect(route('post.index', ['post' => $this->post]))->with('message', 'Comment added successfully');
+        return redirect(route('post.index', $this->post->id))->with('message', 'Comment added successfully');
     }
     public function render()
     {

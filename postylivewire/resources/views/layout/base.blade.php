@@ -38,7 +38,7 @@
                     @auth
                         <button class=" text-secondary btn btn-md btn-outline-light bg-light fs-6 p-2 ">
                             <a class = "text-decoration-none text-secondary"
-                                href="{{ route('profile', auth()->user()) }}">{{ auth()->user()->name }}</a>
+                                href="{{ route('profile', auth()->user()->id) }}">{{ auth()->user()->name }}</a>
                         </button>
                         @livewire('logout-component')
                         {{-- <form action="{{ route('logout') }}" method="post" class="fs-6 me-4 ">

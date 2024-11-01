@@ -7,12 +7,13 @@
                 <div>
                     <span class=" fs-5 text-dark d-block">{{ $user->name }}</span>
                     <span class=" fs-6 text-dark d-block">
-                        <a href="{{ route('followers', $user) }}" class="text-decoration-none text-dark fw-bold">
+                        <a href="{{ route('followers', $user->id) }}" class="text-decoration-none text-dark fw-bold">
                             {{ $user->followers->count() }} <small
                                 class = "fw-normal">{{ Str::plural('Follower', $user->followers->count()) }}</small>
                         </a>
                         @if ($followingCount)
-                            <a href="{{ route('following', $user) }}" class="text-decoration-none text-dark fw-bold">
+                            <a href="{{ route('following', $user->id) }}"
+                                class="text-decoration-none text-dark fw-bold">
                                 {{ $followingCount }} <span class="fw-normal">following</span>
                             </a>
                         @else

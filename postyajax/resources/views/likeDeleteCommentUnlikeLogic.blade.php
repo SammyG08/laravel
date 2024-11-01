@@ -1,5 +1,3 @@
-@props(['post'])
-
 @auth
 
     @if (!$post->likedBy(auth()->user()))
@@ -8,7 +6,8 @@
             @csrf
             <input type="hidden" value="{{ $post->id }}" name="likePostId" id="likePostId">
             <button type="submit" id="submitlike"
-                class="text-decoration-none border-0 text-primary ps-0 bg-transparent"><small>Like</small></button>
+                class="text-decoration-none border-0 text-primary ps-0 bg-transparent"><small
+                    onclick="processLike({{ $post->id }})">Like</small></button>
         </form>
     @else
         <form method="post" class="d-inline" data-url="{{ route('unlike') }}" action="javascript:void(0)"
@@ -16,8 +15,8 @@
             @csrf
             {{-- @method('DELETE') --}}
             <input type="hidden" value="{{ $post->id }}" name="unlikePostId" id="unlikePostId">
-            <button type="submit"
-                class="text-decoration-none border-0 bg-transparent ps-0 text-primary "><small>Unlike</small></button>
+            <button type="submit" class="text-decoration-none border-0 bg-transparent ps-0 text-primary "><small
+                    onclick="processUnlike({{ $post->id }})">Unlike</small></button>
         </form>
     @endif
     <a href="{{ route('comment', $post->id) }}" class="text-decoration-none me-1"><small>Comment</small></a>
@@ -27,8 +26,8 @@
             @csrf
             {{-- @method('DELETE') --}}
             <input type="hidden" value="{{ $post->id }}" name="deletePostId" id="deletePostId">
-            <button type="submit"
-                class="text-decoration-none border-0 bg-transparent ps-0 text-danger "><small>Delete</small></button>
+            <button type="submit" class="text-decoration-none border-0 bg-transparent ps-0 text-danger "><small
+                    onclick="processDelete({{ $post->id }})">Delete</small></button>
         </form>
     @endcan
 @endauth
