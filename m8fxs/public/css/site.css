@@ -1,0 +1,88 @@
+body{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#soccerImage{
+    display:none;
+}
+input:focus{
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+#headerSection{
+    background-color: black;
+    background-image: url('../images/altsoccer.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 30vh;
+    width: 88vw;
+    
+    font-size: 15px !important;
+    background-position: center;
+    margin: auto; 
+
+}
+.popularLeagues{
+    margin-top: 35px;
+}
+
+@media screen and (min-width: 1400px){
+    #soccerImage{
+        display: table;
+    }
+}
+@media screen and (min-width: 768px){
+    #adminControls{
+        margin-top: 0px;
+    }
+    .popularLeagues{
+        margin-top: 18px;
+    }
+}
+@media screen and (min-width: 580px){
+    #headerSection{
+        background-size: cover !important;
+        height: 50vh !important;
+        width: 100vw;
+        text-align: center;
+    }
+    .introduction{
+        display: flex;
+        height: 500px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (min-width: 1200px){
+    #headerSection{
+        background-size: cover !important;
+        height: 100vh !important;
+        text-align: left;
+    }
+    .introduction{
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: larger;
+        text-align:left;
+    }
+}
+@media screen and (max-width: 768px){
+    #adminControls{
+        margin-top: 15px;
+    }
+}
+
+span:hover{
+text-decoration: none;
+cursor:default;
+}
+
+input:focus{
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
