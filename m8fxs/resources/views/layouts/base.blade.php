@@ -69,6 +69,26 @@
     <!-- Template Main CSS File -->
     <link href="../assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/site.css">
+    @if (request()->routeIs('dashboard'))
+        <style>
+            body {
+                background-color: rgba(0, 0, 0, 1);
+            }
+        </style>
+    @endif
+    @if (request()->routeIs('register'))
+        <style>
+            @media screen and (min-width: 1300px) {
+                body {
+                    overflow-y: hidden !important;
+                }
+
+                #registerSection {
+                    margin: 10% auto !important;
+                }
+            }
+        </style>
+    @endif
 </head>
 
 <body>

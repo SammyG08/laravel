@@ -20,14 +20,8 @@ class LoginController extends Controller
     public function attempt(Request $request)
     {
         if (!Auth::attempt($request->only('email', 'password'))) {
-            return session()->flash('status', 'Incorrect credentials');
+            return back()->with('status', 'Incorrect Credentials');
         } else {
-            // if (Auth::user()->id == 1) {
-            //     // dd(Auth::user()->id);
-            //     return redirect(route('dashboard', Auth::user()->id));
-            // } else {
-            //     return redirect(route('home'));
-            // }
             return redirect(route('home'));
         }
     }

@@ -1,9 +1,134 @@
 @extends('layouts.base')
 @section('content')
-    <section data-bs-version="5.1" class="menu menu6 cid-uuTi2FwIi6 container-fluid fixed-top" once="menu" id="menu06-5">
+    <div class="row bg-dark" style="background-color:rgba(0, 0, 0, 1);">
+        <div class="col-12" style="background-color:rgba(0, 0, 0, 1);">
+            <nav class="container col-12 navbar navbar-dark bg-black" style="background-color:rgba(0, 0, 0, 0.5);">
+                <div class="col-12 row ">
+                    <div class="col-2 d-flex justify-content-end align-items-center ps-0 pe-1">
+                        <img src="../assets/images/mbr-96x96.png" alt="m8fxs logo" style="height:3rem; width:3rem;"
+                            class="rounded-circle">
+                    </div>
+                    <div class="col-5 d-flex align-items-center justify-content-start">
+                        <span class="navbar-caption-wrap text-white display-2 fs-1 siteName">m8fxs</span>
+                    </div>
+
+                    <div class="col-5 d-flex justify-content-end pe-1 pt-1 text-end">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapsibleNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="col-12 collapse navbar-collapse" id="collapsibleNavbar">
+                    <div class="bg-dark">
+                        <ul class="container navbar-nav d-flex flex-row justify-content-around align-items-center"
+                            id="navItems">
+                            <li class="nav-item">
+                                <a class="nav-link link text-info fs-6 display-5 fw-bold"
+                                    href="{{ route('home') }}#top">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link text-muted fs-6 display-5"
+                                    href="{{ route('home') }}#predictions">PREDICTIONS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link link text-muted fs-6  display-5"
+                                    href="{{ route('home') }}#contacts1-2">CONTACT
+                                    US</a>
+                            </li>
+                            @auth
+                                @if (auth()->user()->id == 1)
+                                    <li class="navbar-text">
+                                        <a class="btn btn-sm btn-outline-light text-white bg-secondary text-dark fs-7 navBtn text-decoration-none"
+                                            href="{{ route('dashboard') }}">Dashboard</a>
+                                    </li>
+                                @endif
+                                <li class="navbar-text">
+                                    <a class="btn btn-sm btn-outline-light text-white bg-secondary fs-7 navBtn text-decoration-none"
+                                        href="{{ route('logout') }}">Logout</a>
+                                </li>
+                            @endauth
+                            @guest
+                                <li class="navbar-text">
+                                    <a class=" btn btn-sm btn-outline-light text-white bg-secondary fs-7 navBtn text-decoration-none"
+                                        href="{{ route('login') }}">Log
+                                        In</a>
+                                </li>
+                                <li class="navbar-text">
+                                    <a class="btn btn-sm btn-outline-light bg-secondary text-white fs-7 navBtn text-decoration-none"
+                                        href="{{ route('register') }}">Sign
+                                        Up</a>
+                                </li>
+                            @endguest
+
+                        </ul>
+                        {{-- <div class=" d-flex flex-column justify-content-end">
+                            @auth
+                                @if (auth()->user()->id == 1)
+                                    <a class="btn btn-sm rounded-4 btn-dark display-6" href="{{ route('dashboard') }}"
+                                        style="font-family: Arial, Helvetica, sans-serif;">Dashboard</a>
+                                @endif
+                                <a class="btn btn-sm btn-secondary rounded-4 display-6" href="{{ route('logout') }}"
+                                    style="font-family: Arial, Helvetica, sans-serif;">Logout</a>
+                            @endauth
+                            @guest
+                                <a class="btn btn-sm rounded-4 btn-secondary display-3" href="{{ route('login') }}">Login</a>
+                                <a class="btn btn-sm btn-dark rounded-4 display-3" href="{{ route('register') }}">Sign up</a>
+                            @endguest
+
+                        </div> --}}
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        {{-- <div class="container collapse navbar-collapse" id="collapsibleNavbar">
+            <div class="mx-auto bg-dark d-flex justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link link text-info fs-6 display-5 fw-bold" href="{{ route('home') }}#top">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-muted fs-6 display-5"
+                            href="{{ route('home') }}#predictions">PREDICTIONS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link link text-muted fs-6  display-5" href="{{ route('home') }}#contacts1-2">CONTACT
+                            US</a>
+                    </li>
+                </ul>
+
+            </div> --}}
+        {{-- <div class="col-6 d-flex justify-content-center">
+                <ul class=" navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link link text-muted fs-6 display-5"
+                            href="{{ route('home') }}#predictions">PREDICTIONS</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <ul class=" navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link link text-muted fs-6  display-5" href="{{ route('home') }}#contacts1-2">CONTACT
+                            US</a>
+                    </li>
+                </ul>
+            </div> --}}
+        {{-- </div> --}}
+
+    </div>
+
+    </div>
+    </div>
+    </div>
+    {{-- <section data-bs-version="5.1" class="menu menu6 cid-uuTi2FwIi6 col-12 container-fluid fixed-top" once="menu"
+        id="menu06-5">
 
 
-        <nav class="navbar navbar-expand-lg container">
+        <nav class="navbar navbar-expand-lg me-0">
             <div class="container-fluid pt-0 rounded-3">
                 <div class="navbar-brand">
                     <span class="navbar-logo">
@@ -60,9 +185,49 @@
                 </div>
             </div>
         </nav>
-    </section>
+    </section> --}}
     <section data-bs-version="5.1" class="" id="headerSection">
-        <div class="mbr-overlay" style="opacity: 0.7;"></div>
+        <div class=" row bg-dark">
+            <div class="col-12 pe-1 imageHeader">
+                <div class="card text-white text-center bg-dark">
+                    <img src="../images/altsoccer.jpg" alt="" class="football image card-img"
+                        style="height:100%; width:100%;">
+                    <div class="card-img-overlay theOverlay d-sm-flex justify-content-start align-items-center textContainer"
+                        style="background-color: rgba(0, 0, 0, 0.5)">
+                        <div class="card-body ">
+                            <h1 class="text-white display-2 fw-bold fs-1 h-1 welcomeText"><strong>Welcome to
+                                    m8fxs.</strong></h1>
+                            <p class="mbr-text mbr-fonts-style mbr-white card-text display-7 fs-7 directionText">Get your
+                                High and Low
+                                Risk
+                                Slips
+                                from
+                                The
+                                No.1
+                                Sports Prediction Guru
+                            </p>
+                            <a class="btn btn-dark display-6 freeTipsBtn" href="{{ route('home') }}#freeTips">
+                                Free tips
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            {{-- <div class="introduction col-xl-3 col-md-12 d-xl-flex justify-content-center align-items-center px-auto">
+                <div class=" col-9 textContainer text-wrap">
+
+
+
+
+
+                </div>
+
+
+            </div> --}}
+        </div>
+        {{-- <div class="mbr-overlay" style="opacity: 0.7;"></div>
 
         <div class="container-fluid">
             <div class="row justify-content-center align-items-end">
@@ -83,216 +248,221 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
     </section>
 
-    <main id="predictions" class="mt-5 mb-5">
-        <div class="container">
-            <div class="mx-auto row mt-5">
-                <h6 class="text-center display-7 fs-2 fw-bold text-muted">PREDICTIONS</h6>
-                <h6 class="display-7 fs-7 text-center text-muted">These predictions are made based on data analysed by
-                    experts in our team</h6>
-                <div class="col-12 col-lg-8">
-                    <div class="container-fluid px-0">
-                        @if ($previousFootballTickets->count() || $previousBasketballTickets->count())
-                            <div class="col-12 d-flex justify-content-evenly">
-                                <div class="mt-3 rounded-2 pb-1 d-flex flex-column align-items-center container-fluid "
-                                    style="background-color:dimgray;">
-                                    <div class="d-flex container-fluid justify-content-between align-items-center">
-                                        <h5 class="display-7 fw-bold text-white">VIEW PREVIOUS TICKETS</h5>
-                                        <button class="btn border-0 shadow-none button" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#previousTickets"
-                                            aria-expanded="false" aria-controls="previousTickets"><i
-                                                class="bi bi-caret-down-fill" id="showPreviousTickets"
-                                                data-count=0></i></button>
-                                    </div>
-                                    @if ($previousFootballTickets->count())
-                                        <div class="container-fluid collapse" id="previousTickets">
-                                            <table class="table table-striped table-hover bg-white">
-                                                <tr class="table-row">
-                                                    <th class="table-head">League</th>
-                                                    <th class="table-head">Teams</th>
-                                                    <th class="table-head">Selection</th>
-                                                    <th class="table-head">Result</th>
-                                                </tr>
-
-
-                                                @foreach ($previousFootballTickets as $footballTicket)
-                                                    <tr class="table-row">
-                                                        <td class="table-data">{{ $footballTicket->league }}</td>
-                                                        <td class="table-data">{{ $footballTicket->homeTeam }} vs
-                                                            {{ $footballTicket->awayTeam }}</td>
-                                                        <td class="table-data">{{ $footballTicket->selection }}</td>
-                                                        <td class="table-data">{{ $footballTicket->result }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </table>
-                                        </div>
-                                    @endif
-                                    @if ($previousBasketballTickets->count())
-                                        <div class="container-fluid collapse" id="previousTickets">
-                                            <table class="table table-striped table-hover bg-white">
-                                                <tr class="table-row">
-                                                    <th class="table-head">League</th>
-                                                    <th class="table-head">Teams</th>
-                                                    <th class="table-head">Selection</th>
-                                                    <th class="table-head">Result</th>
-                                                </tr>
-                                                @foreach ($previousBasketballTickets as $basketballTicket)
-                                                    <tr class="table-row">
-                                                        <td class="table-data">{{ $basketballTicket->league }}</td>
-                                                        <td class="table-data">{{ $basketballTicket->homeTeam }} vs
-                                                            {{ $basketballTicket->awayTeam }}</td>
-                                                        <td class="table-data">{{ $basketballTicket->selection }}</td>
-                                                        <td class="table-data">{{ $basketballTicket->result }}</td>
-                                                    </tr>
-                                                @endforeach
-                                            </table>
-                                        </div>
-                                    @endif
-
-                                </div>
-                            </div>
-                        @endif
-                        <div class=" col-12 d-flex justify-content-evenly" id="freeTips">
-                            <div class="mt-3 rounded-2 pb-1 d-flex flex-column align-items-center container-fluid "
-                                style="background-color: cadetblue;">
-
-                                <div class="d-flex container-fluid justify-content-between align-items-center">
-                                    <h5 class="display-7 fw-bold text-white">FREE FOOTBALL ODDS</h5>
-                                    <button class="btn border-0 shadow-none button" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#freeOdds" aria-expanded="false"
-                                        aria-controls="freeOdds"><i class="bi bi-caret-down-fill" id="showBtn"
-                                            data-count=0></i></button>
-                                </div>
-                                <div class="container-fluid collapse" id="freeOdds">
-                                    <table class="table table-striped table-hover bg-white">
-                                        <tr class="table-row">
-                                            <th class="table-head">League</th>
-                                            <th class="table-head">Teams</th>
-                                            <th class="table-head">Selection</th>
-                                            <th class="table-head">Result</th>
-                                        </tr>
-
-                                        @if ($predictions->count())
-                                            @foreach ($predictions as $prediction)
-                                                <tr class="table-row">
-                                                    <td class="table-data">{{ $prediction->league }}</td>
-                                                    <td class="table-data">{{ $prediction->homeTeam }} vs
-                                                        {{ $prediction->awayTeam }}</td>
-                                                    <td class="table-data">{{ $prediction->selection }}</td>
-                                                    <td class="table-data">{{ $prediction->result }}</td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr class="table-row">
-                                                <td class="table-data">-</td>
-                                                <td class="table-data">-</td>
-                                                <td class="table-data">-</td>
-                                                <td class="table-data">-</td>
-                                            </tr>
-                                        @endif
-
-                                    </table>
-                                </div>
-                                <div class="d-flex container-fluid justify-content-between align-items-center">
-                                    <h5 class="display-7 fw-bold text-white">FREE BASKETBALL ODDS</h5>
-                                    <button class="btn border-0 shadow-none button" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#bballOdds" aria-expanded="false"
-                                        aria-controls="bballOdds"><i class="bi bi-caret-down-fill" id="showBballOdds"
-                                            data-count=0></i></button>
-                                </div>
-                                <div class="container-fluid collapse" id="bballOdds">
-
-                                    <table class="table table-striped bg-white table-hover">
-                                        <tr class="table-row">
-                                            <th class="table-head">League</th>
-                                            <th class="table-head">Teams</th>
-                                            <th class="table-head">Selection</th>
-                                            <th class="table-head">Result</th>
-                                        </tr>
-                                        @if ($basketballPredictions->count())
-                                            @foreach ($basketballPredictions as $bballPrediction)
-                                                <tr class="table-row">
-                                                    <td class="table-data">{{ $bballPrediction->league }}</td>
-                                                    <td class="table-data">{{ $bballPrediction->homeTeam }} vs
-                                                        {{ $bballPrediction->awayTeam }}</td>
-                                                    <td class="table-data">{{ $bballPrediction->selection }}</td>
-                                                    <td class="table-data">{{ $bballPrediction->result }}</td>
-                                                </tr>
-                                            @endforeach
-                                        @else
-                                            <tr class="table-row">
-                                                <td class="table-data">-</td>
-                                                <td class="table-data">-</td>
-                                                <td class="table-data">-</td>
-                                                <td class="table-data">-</td>
-                                            </tr>
-                                        @endif
-                                    </table>
-                                </div>
+    <main id="predictions" class="mt-0 mb-5 container">
+        <div class=" mx-auto row mt-5">
+            <h6 class="text-center display-7 fs-2 fw-bold text-secondary">PREDICTIONS</h6>
+            <h6 class="display-7 fs-7 text-center text-muted">These predictions are made based on data analysed by
+                experts in our team</h6>
+            <div class="col-12 col-lg-8">
+                @if ($previousFootballTickets->count() || $previousBasketballTickets->count())
+                    <div class="col-12 ">
+                        <div class="col-12 ps-1 mt-3 rounded-2 pb-1 d-flex flex-column align-items-center"
+                            style="background-color:dimgray;">
+                            <div class=" col-12 d-flex justify-content-between align-items-center">
+                                <h5 class="display-7 fw-bold text-white">VIEW PREVIOUS TICKETS</h5>
+                                <button class="btn border-0 shadow-none button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#previousTickets" aria-expanded="false"
+                                    aria-controls="previousTickets"><i class="bi bi-caret-down-fill"
+                                        id="showPreviousTickets" data-count=0></i></button>
                             </div>
                         </div>
                     </div>
-                </div>
+                    @if ($previousFootballTickets->count())
+                        <div class="col-12">
+                            <div class="col-12 table-responsive collapse" id="previousTickets">
+                                <table class="col-12 table table-striped table-hover bg-white">
+                                    <tr class="table-row">
+                                        <th class="table-head">League</th>
+                                        <th class="table-head">Teams</th>
+                                        <th class="table-head">Selection</th>
+                                        <th class="table-head">Result</th>
+                                    </tr>
 
-                <div class="col-12 col-lg-4 container-fluid popularLeagues">
-                    <div class="card-body border-black">
-                        <table class="table bg-white">
-                            <tr class="">
-                                <th class="bg-dark text-white">Popular leagues</th>
+
+                                    @foreach ($previousFootballTickets as $footballTicket)
+                                        <tr class="table-row">
+                                            <td class="table-data">{{ $footballTicket->league }}</td>
+                                            <td class="table-data">{{ $footballTicket->homeTeam }} vs
+                                                {{ $footballTicket->awayTeam }}</td>
+                                            <td class="table-data">{{ $footballTicket->selection }}</td>
+                                            <td class="table-data">{{ $footballTicket->result }}</td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+                    @endif
+                    @if ($previousBasketballTickets->count())
+                        <div class="col-12">
+                            <div class="col-12 table-responsive collapse" id="previousTickets">
+                                <table class="col-12 table table-striped table-hover bg-white">
+                                    <tr class="table-row">
+                                        <th class="table-head">League</th>
+                                        <th class="table-head">Teams</th>
+                                        <th class="table-head">Selection</th>
+                                        <th class="table-head">Result</th>
+                                    </tr>
+
+
+                                    @foreach ($previousBasketballTickets as $basketballTicket)
+                                        <tr class="table-row">
+                                            <td class="table-data">{{ $basketballTicket->league }}</td>
+                                            <td class="table-data">{{ $basketballTicket->homeTeam }} vs
+                                                {{ $basketballTicket->awayTeam }}</td>
+                                            <td class="table-data">{{ $basketballTicket->selection }}</td>
+                                            <td class="table-data">{{ $basketballTicket->result }}</td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+                <div class="col-12 " id="freeTips">
+                    <div class="col-12 ps-1 mt-3 rounded-2 pb-1 d-flex flex-column align-items-center"
+                        style="background-color:cadetblue;">
+                        <div class=" col-12 d-flex justify-content-between align-items-center">
+                            <h5 class="display-7 fw-bold text-white">FOOTBALL ODDS</h5>
+                            <button class="btn border-0 shadow-none button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#freeOdds" aria-expanded="false" aria-controls="freeOdds"><i
+                                    class="bi bi-caret-down-fill" id="showBtn" data-count=0></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="col-12 table-responsive collapse" id="freeOdds">
+                        <table class="col-12 table table-striped table-hover bg-white">
+                            <tr class="table-row">
+                                <th class="table-head">League</th>
+                                <th class="table-head">Teams</th>
+                                <th class="table-head">Selection</th>
+                                <th class="table-head">Result</th>
                             </tr>
-                            <tr class="">
-                                <td class=""> English Premier League</td>
-                            </tr>
-                            <tr>
-                                <td class="">Spanish Laliga</td>
-                            </tr>
-                            <tr>
-                                <td class="">German Bundesliga</td>
-                            </tr>
-                            <tr>
-                                <td class="">French Ligue 1</td>
-                            </tr>
-                            <tr>
-                                <td class="">Netherlands Eredivise</td>
-                            </tr>
-                            <tr>
-                                <td class="">Italian Serie A</td>
-                            </tr>
-                            <tr>
-                                <td class="">Scotland Premiership</td>
-                            </tr>
-                            <tr>
-                                <td class="">Turkey Super Lig</td>
-                            </tr>
-                            <tr>
-                                <td class="">Portugal Primeira Liga</td>
-                            </tr>
-                            <tr>
-                                <td class="">UEFA Champions League</td>
-                            </tr>
-                            <tr>
-                                <td class="">UEFA Europa League</td>
-                            </tr>
+                            @if ($predictions->count())
+                                @foreach ($predictions as $prediction)
+                                    <tr class="table-row">
+                                        <td class="table-data">{{ $prediction->league }}</td>
+                                        <td class="table-data">{{ $prediction->homeTeam }} vs
+                                            {{ $prediction->awayTeam }}</td>
+                                        <td class="table-data">{{ $prediction->selection }}</td>
+                                        <td class="table-data">{{ $prediction->result }}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr class="table-row">
+                                    <td class="table-data">-</td>
+                                    <td class="table-data">-</td>
+                                    <td class="table-data">-</td>
+                                    <td class="table-data">-</td>
+                                </tr>
+                            @endif
                         </table>
                     </div>
-
-                    <div class="card" style="background-color:thistle">
-                        <span class="card-header bg-info text-white">Tipster Advice</span>
-                        <div class="card-body text-white">
-                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                class="bi bi-star-fill"></i><br><br>
-                            <p class="fs-6 display-7 text-dark">To all clients, reduce your bet addiction. Everything we do
-                                here is with data analysis, my own intelligence, experience and instincts. m8fxs.com is for
-                                persons with age 18+ Only! BET RESPONSIBLY!! Thank you.<br><br>@mason</p>
+                </div>
+                <div class="col-12 ">
+                    <div class="col-12 ps-1 mt-3 rounded-2 pb-1 d-flex flex-column align-items-center"
+                        style="background-color:cadetblue;">
+                        <div class=" col-12 d-flex justify-content-between align-items-center">
+                            <h5 class="display-7 fw-bold text-white">BASKETBALL ODDS</h5>
+                            <button class="btn border-0 shadow-none button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#bballOdds" aria-expanded="false" aria-controls="bballOdds"><i
+                                    class="bi bi-caret-down-fill" id="showBballOdds" data-count=0></i>
+                            </button>
                         </div>
                     </div>
                 </div>
-
-
+                <div class="col-12">
+                    <div class="col-12 table-responsive collapse" id="bballOdds">
+                        <table class="col-12 table table-striped table-hover bg-white">
+                            <tr class="table-row">
+                                <th class="table-head">League</th>
+                                <th class="table-head">Teams</th>
+                                <th class="table-head">Selection</th>
+                                <th class="table-head">Result</th>
+                            </tr>
+                            @if ($basketballPredictions->count())
+                                @foreach ($basketballPredictions as $bballPrediction)
+                                    <tr class="table-row">
+                                        <td class="table-data">{{ $bballPrediction->league }}</td>
+                                        <td class="table-data">{{ $bballPrediction->homeTeam }} vs
+                                            {{ $bballPrediction->awayTeam }}</td>
+                                        <td class="table-data">{{ $bballPrediction->selection }}</td>
+                                        <td class="table-data">{{ $bballPrediction->result }}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr class="table-row">
+                                    <td class="table-data">-</td>
+                                    <td class="table-data">-</td>
+                                    <td class="table-data">-</td>
+                                    <td class="table-data">-</td>
+                                </tr>
+                            @endif
+                        </table>
+                    </div>
+                </div>
             </div>
+
+            <div class="col-12 col-lg-4 container-fluid popularLeagues">
+                <div class="card-body border-black">
+                    <table class="table table-responsive-sm bg-white">
+                        <tr class="">
+                            <th class="bg-dark text-white">Popular leagues</th>
+                        </tr>
+                        <tr class="">
+                            <td class=""> English Premier League</td>
+                        </tr>
+                        <tr>
+                            <td class="">Spanish Laliga</td>
+                        </tr>
+                        <tr>
+                            <td class="">German Bundesliga</td>
+                        </tr>
+                        <tr>
+                            <td class="">French Ligue 1</td>
+                        </tr>
+                        <tr>
+                            <td class="">Netherlands Eredivise</td>
+                        </tr>
+                        <tr>
+                            <td class="">Italian Serie A</td>
+                        </tr>
+                        <tr>
+                            <td class="">Scotland Premiership</td>
+                        </tr>
+                        <tr>
+                            <td class="">Turkey Super Lig</td>
+                        </tr>
+                        <tr>
+                            <td class="">Portugal Primeira Liga</td>
+                        </tr>
+                        <tr>
+                            <td class="">UEFA Champions League</td>
+                        </tr>
+                        <tr>
+                            <td class="">UEFA Europa League</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="card" style="background-color:thistle">
+                    <span class="card-header bg-info text-white">Tipster Advice</span>
+                    <div class="card-body text-white">
+                        <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><br><br>
+                        <p class="fs-6 display-7 text-dark">To all clients, reduce your bet addiction. Everything we do
+                            here is with data analysis, my own intelligence, experience and instincts. m8fxs.com is for
+                            persons with age 18+ Only! BET RESPONSIBLY!! Thank you.<br><br>@mason</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
         </div>
 
     </main>
