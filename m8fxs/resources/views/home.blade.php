@@ -40,152 +40,36 @@
                             @auth
                                 @if (auth()->user()->id == 1)
                                     <li class="navbar-text">
-                                        <a class="btn btn-sm btn-outline-light text-white bg-secondary text-dark fs-7 navBtn text-decoration-none"
+                                        <a class="nav-link btn btn-sm btn-outline-light text-white bg-secondary text-dark fs-7 navBtn text-decoration-none px-1"
                                             href="{{ route('dashboard') }}">Dashboard</a>
                                     </li>
                                 @endif
                                 <li class="navbar-text">
-                                    <a class="btn btn-sm btn-outline-light text-white bg-secondary fs-7 navBtn text-decoration-none"
+                                    <a class="nav-link btn btn btn-outline-light text-white bg-secondary fs-7 navBtn text-decoration-none px-2"
                                         href="{{ route('logout') }}">Logout</a>
                                 </li>
                             @endauth
                             @guest
                                 <li class="navbar-text">
-                                    <a class=" btn btn-sm btn-outline-light text-white bg-secondary fs-7 navBtn text-decoration-none"
+                                    <a class=" nav-link btn btn-outline-light text-white bg-secondary fs-7 navBtn text-decoration-none px-3"
                                         href="{{ route('login') }}">Log
                                         In</a>
                                 </li>
                                 <li class="navbar-text">
-                                    <a class="btn btn-sm btn-outline-light bg-secondary text-white fs-7 navBtn text-decoration-none"
+                                    <a class=" nav-link btn btn-outline-light bg-secondary text-white fs-7 navBtn text-decoration-none px-2"
                                         href="{{ route('register') }}">Sign
                                         Up</a>
                                 </li>
                             @endguest
 
                         </ul>
-                        {{-- <div class=" d-flex flex-column justify-content-end">
-                            @auth
-                                @if (auth()->user()->id == 1)
-                                    <a class="btn btn-sm rounded-4 btn-dark display-6" href="{{ route('dashboard') }}"
-                                        style="font-family: Arial, Helvetica, sans-serif;">Dashboard</a>
-                                @endif
-                                <a class="btn btn-sm btn-secondary rounded-4 display-6" href="{{ route('logout') }}"
-                                    style="font-family: Arial, Helvetica, sans-serif;">Logout</a>
-                            @endauth
-                            @guest
-                                <a class="btn btn-sm rounded-4 btn-secondary display-3" href="{{ route('login') }}">Login</a>
-                                <a class="btn btn-sm btn-dark rounded-4 display-3" href="{{ route('register') }}">Sign up</a>
-                            @endguest
 
-                        </div> --}}
 
                     </div>
                 </div>
             </nav>
         </div>
-
-        {{-- <div class="container collapse navbar-collapse" id="collapsibleNavbar">
-            <div class="mx-auto bg-dark d-flex justify-content-center">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link link text-info fs-6 display-5 fw-bold" href="{{ route('home') }}#top">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link text-muted fs-6 display-5"
-                            href="{{ route('home') }}#predictions">PREDICTIONS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link link text-muted fs-6  display-5" href="{{ route('home') }}#contacts1-2">CONTACT
-                            US</a>
-                    </li>
-                </ul>
-
-            </div> --}}
-        {{-- <div class="col-6 d-flex justify-content-center">
-                <ul class=" navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link link text-muted fs-6 display-5"
-                            href="{{ route('home') }}#predictions">PREDICTIONS</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-6 d-flex justify-content-center">
-                <ul class=" navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link link text-muted fs-6  display-5" href="{{ route('home') }}#contacts1-2">CONTACT
-                            US</a>
-                    </li>
-                </ul>
-            </div> --}}
-        {{-- </div> --}}
-
     </div>
-
-    </div>
-    </div>
-    </div>
-    {{-- <section data-bs-version="5.1" class="menu menu6 cid-uuTi2FwIi6 col-12 container-fluid fixed-top" once="menu"
-        id="menu06-5">
-
-
-        <nav class="navbar navbar-expand-lg me-0">
-            <div class="container-fluid pt-0 rounded-3">
-                <div class="navbar-brand">
-                    <span class="navbar-logo">
-                        <a href="{{ route('home') }}#top">
-                            <img src="../assets/images/mbr-96x96.png" alt="m8fxs logo" style="height: 3rem;">
-                        </a>
-                    </span>
-                    <span class="navbar-caption-wrap"><span
-                            class="navbar-caption text-black display-2 fs-2">m8fxs</span></span>
-                </div>
-                <button class="navbar-toggler border-0 shadow-none" type="button" data-toggle="collapse"
-                    data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
-                <div class="collapse navbar-collapse opacityScrollOff " id="navbarSupportedContent">
-                    <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                        <li class="nav-item">
-                            <a class="nav-link link text-info fs-6 display-5 fw-bold"
-                                href="{{ route('home') }}#top">HOME</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link text-muted fs-6 display-5"
-                                href="{{ route('home') }}#predictions">PREDICTIONS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link text-muted fs-6  display-5"
-                                href="{{ route('home') }}#contacts1-2">CONTACT
-                                US</a>
-                        </li>
-                    </ul>
-
-                    <div class="navbar-buttons mbr-section-btn">
-                        @auth
-                            @if (auth()->user()->id == 1)
-                                <a class="btn btn-sm rounded-4 btn-dark display-6" href="{{ route('dashboard') }}"
-                                    style="font-family: Arial, Helvetica, sans-serif;">Dashboard</a>
-                            @endif
-                            <a class="btn btn-sm btn-secondary rounded-4 display-6" href="{{ route('logout') }}"
-                                style="font-family: Arial, Helvetica, sans-serif;">Logout</a>
-                        @endauth
-                        @guest
-                            <a class="btn btn-sm rounded-4 btn-secondary display-3" href="{{ route('login') }}">Login</a>
-                            <a class="btn btn-sm btn-dark rounded-4 display-3" href="{{ route('register') }}">Sign up</a>
-                        @endguest
-
-                    </div>
-
-                </div>
-            </div>
-        </nav>
-    </section> --}}
     <section data-bs-version="5.1" class="" id="headerSection">
         <div class=" row bg-dark">
             <div class="col-12 pe-1 imageHeader">
@@ -215,40 +99,7 @@
                 </div>
 
             </div>
-            {{-- <div class="introduction col-xl-3 col-md-12 d-xl-flex justify-content-center align-items-center px-auto">
-                <div class=" col-9 textContainer text-wrap">
-
-
-
-
-
-                </div>
-
-
-            </div> --}}
         </div>
-        {{-- <div class="mbr-overlay" style="opacity: 0.7;"></div>
-
-        <div class="container-fluid">
-            <div class="row justify-content-center align-items-end">
-                <div class="col-12 col-lg-7 mt-5" id="#introduction">
-                    <div class="container introduction">
-                        <h1 class="display-2 text-white"><strong>Welcome to
-                                m8fxs.</strong></h1>
-
-                        <p class="mbr-text mbr-fonts-style mbr-white display-7 fs-6">Get your High and Low Risk Slips from
-                            The
-                            No.1
-                            Sports Prediction Guru</p>
-                        <div class="mbr-section-btn mt-3">
-                            <a class="btn btn-black btn-lg display-6 " href="{{ route('home') }}#freeTips">
-                                Today's free tips
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </div> --}}
     </section>
 
     <main id="predictions" class="mt-0 mb-5 container">
